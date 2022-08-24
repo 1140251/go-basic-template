@@ -40,7 +40,7 @@ analyze: ## Analyze code using golangci-lint
 
 .PHONY: fmt
 fmt: ## Format source using gofmt
-	gofmt -l -s -w ./...
+	gofmt -l -s -w ./..
 
 .PHONY: build
 build: ## Compiles the package to build dir defined
