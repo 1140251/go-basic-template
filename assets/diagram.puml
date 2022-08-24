@@ -1,0 +1,19 @@
+@startuml
+start
+
+:number A;
+
+if (a%3 and a%5?) then (yes)
+    :FizzBuzz;
+    stop
+else if (a%3?) then (yes)
+        :Fizz;
+        stop
+else if (a%5) then (yes)
+         :Buzz;
+         stop
+else
+         :Empty;
+         stop
+endif
+@enduml

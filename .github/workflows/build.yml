@@ -1,0 +1,41 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - '*.*.*'
+      - 'feat*'
+  pull_request:
+jobs:
+  vetting:
+    name: Vetting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Project Validation
+        run: make vet
+  analyze:
+    name: Static Analysis
+    needs: vetting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Static Analysis
+        run: make analyze
+  test:
+    name: Test
+    needs: analyze
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Repo Checkout
+        uses: actions/checkout@v2
+      - name: Run Tests
+        run: make test
+      - name: Check Coverage
+        run: make check-coverage
