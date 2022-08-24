@@ -7,10 +7,7 @@ BUILD_DIR:=./build
 BINARY_NAME:=binary
 DIAGRAMS_SRC := assets
 
-
-
-
-default: vet test check-coverage analyze
+default: help
 
 help: ## Prints help for targets with comments
 	@echo ""
