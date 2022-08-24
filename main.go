@@ -7,6 +7,6 @@ import (
 
 func main() {
 	for i := 0; i <= 100; i++ {
-		fmt.Printf("%s\n", internal.Fizzbuzz(i))
+		fmt.Printf("%d, %s\n", i, internal.Fizzbuzz(i))
 	}
 }

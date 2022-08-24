@@ -35,7 +35,11 @@ check-coverage: ## Check coverage - Requires tests to run first
 
 .PHONY: analyze
 analyze: ## Analyze code using golangci-lint
-	golangci-lint run
+	@docker run --rm \
+    		-v ${PWD}:${PWD} \
+    		-w ${PWD} \
+    		golangci/golangci-lint:v1.47.2 \
+    		golangci-lint run -v --config .golangci.yml
 
 .PHONY: fmt
 fmt: ## Format source using gofmt
@@ -59,11 +63,11 @@ up: ## Run the package locally
 # Docker #
 #########
 
-build-docker: ## Build docker image
+docker-build: ## Build docker image
 	docker image build \
     		-t ${BASE_NAME}:latest .
 
-run-docker: ## Run command plugin example
+docker-run: ## Run docker image
 	@docker run --rm \
 		${BASE_NAME}:latest
 
