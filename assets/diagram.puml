@@ -9,10 +9,10 @@ if (a%3 and a%5?) then (yes)
 else if (a%3?) then (yes)
         :Fizz;
         stop
-else if (a%5) then (yes)
+else if (a%5?) then (yes)
          :Buzz;
          stop
-else
+else (no)
          :Empty;
          stop
 endif
